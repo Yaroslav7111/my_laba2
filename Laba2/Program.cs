@@ -156,8 +156,6 @@ class Program
 
         int[,] arr = new int[rows, cols];
 
-        Console.WriteLine("Введіть дані:");
-
         Input(arr, rows, cols);
 
         int maxelm = arr[0, 0];
@@ -171,7 +169,7 @@ class Program
                 {
                     maxelm = arr[i, j];
 
-                    maxelemRow = j;
+                    maxelemRow = i;
 
                 }
             }
@@ -184,22 +182,20 @@ class Program
         }
 
         int[] needrow = new int[cols];
-        int[] needind = new int[cols];
+        
         for (int i = rows - 1, j = 0; i >= 0; i--, j++)
         {
             needrow[j] = arr[i, j];
-            needind[j] = i;
         }
-
-        for (int i = rows - 1, j = 0; i >= 0; i--, j++)
+        for(int j =0; j < cols; j++)
         {
-            arr[i, j] = maxElmRow[j];
-
+            arr[maxelemRow, j] = needrow[j];
         }
-        for (int i = 0; i < rows; i++)
+        for (int i =0; i< rows;i++)
         {
-            arr[needind[i], i] = needrow[i];
+            arr[i, cols - 1 - i] = maxElmRow[i];
         }
+        
         Print(arr);
     }
         static void Task3()

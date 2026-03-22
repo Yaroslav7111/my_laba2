@@ -12,3 +12,4 @@ D:\Programirovanie\ProjectC\Laba2\Laba2\obj\Debug\net10.0\refint\Laba2.dll
 D:\Programirovanie\ProjectC\Laba2\Laba2\obj\Debug\net10.0\Laba2.pdb
 D:\Programirovanie\ProjectC\Laba2\Laba2\obj\Debug\net10.0\Laba2.genruntimeconfig.cache
 D:\Programirovanie\ProjectC\Laba2\Laba2\obj\Debug\net10.0\ref\Laba2.dll
+D:\Programirovanie\ProjectC\Laba2\Laba2\obj\Debug\net10.0\Laba2.sourcelink.json
