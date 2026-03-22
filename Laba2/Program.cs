@@ -160,28 +160,28 @@ class Program
 
         Input(arr, rows, cols);
 
+        int max = arr[0, 0];
+
         for (int i = 0; i < rows; i++)
         {
-            int max = arr[i, 0];
-            int this_row = 0;
             for (int j = 0; j < cols; j++)
             {
-                while (arr[i, j] > max)
+                if (arr[i, j] > max)
                 {
                     max = arr[i, j];
-                    arr[i, j] = this_row;
-                    this_row++;
 
                 }
             }
         }
-        int row = arr.GetLength(0);
-
         int []needrow = new int[cols];
+        int []needind = new int[cols];
         for (int i = rows - 1, j = 0; i >= 0; i--, j++)
         {
             needrow[j]= arr[i, j];
+            needind[j] = i;
         }
+
+
 
     }
     static void Task3()
