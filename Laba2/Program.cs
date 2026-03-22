@@ -19,7 +19,7 @@ class Program
             case 1:
                 Task1();
                 break;
-             
+
             case 2:
                 Task2();
                 break;
@@ -58,11 +58,11 @@ class Program
             return true;
         }
     }
-      static int[,] Print(int[,] matrix)
+    static int[,] Print(int[,] matrix)
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
-            for (int j = 0; j < matrix.GetLength(1); j++) 
+            for (int j = 0; j < matrix.GetLength(1); j++)
             {
                 Console.Write(matrix[i, j] + "\t");
             }
@@ -70,15 +70,15 @@ class Program
         }
 
         return matrix;
-       }
-       static bool Corect2(int n, int c)
-        {
+    }
+    static bool Corect2(int n, int c)
+    {
         if (n == c)
             return true;
         else
             return false;
-        }
-     static int[,] Input(int[,] arr , int rows , int cols)
+    }
+    static int[,] Input(int[,] arr, int rows, int cols)
     {
         Console.WriteLine("Введіть дані:");
         for (int i = 0; i < rows; i++)
@@ -91,7 +91,7 @@ class Program
         }
         return arr;
     }
-    static void Input2( out int rows ,out int cols)
+    static void Input2(out int rows, out int cols)
     {
         Console.Write("Введіть кількість рядків: ");
         rows = int.Parse(Console.ReadLine());
@@ -102,7 +102,7 @@ class Program
 
     static void Task1()
     {
-        int rows , cols;
+        int rows, cols;
 
         Input2(out rows, out cols);
 
@@ -141,15 +141,15 @@ class Program
 
 
     }
-   
+
     static void Task2()
     {
         int rows, cols;
 
         Input2(out rows, out cols);
 
-        if (!Corect2(rows,cols))
-            {
+        if (!Corect2(rows, cols))
+        {
             Console.WriteLine("Введіть елементи, щоб матриця була квадратна!!!");
             return;
         }
@@ -160,36 +160,54 @@ class Program
 
         Input(arr, rows, cols);
 
-        int max = arr[0, 0];
+        int maxelm = arr[0, 0];
+        int maxelemRow = 0;
 
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
             {
-                if (arr[i, j] > max)
+                if (arr[i, j] > maxelm)
                 {
-                    max = arr[i, j];
+                    maxelm = arr[i, j];
+
+                    maxelemRow = j;
 
                 }
             }
         }
-        int []needrow = new int[cols];
-        int []needind = new int[cols];
+        int[] maxElmRow = new int[cols];
+
+        for (int j = 0; j < cols; j++)
+        {
+            maxElmRow[j] = arr[maxelemRow, j];
+        }
+
+        int[] needrow = new int[cols];
+        int[] needind = new int[cols];
         for (int i = rows - 1, j = 0; i >= 0; i--, j++)
         {
-            needrow[j]= arr[i, j];
+            needrow[j] = arr[i, j];
             needind[j] = i;
         }
 
+        for (int i = rows - 1, j = 0; i >= 0; i--, j++)
+        {
+            arr[i, j] = maxElmRow[j];
 
-
+        }
+        for (int i = 0; i < rows; i++)
+        {
+            arr[needind[i], i] = needrow[i];
+        }
+        Print(arr);
     }
-    static void Task3()
-    {
+        static void Task3()
+        {
 
-    }
-    static void Task4()
-    {
+        }
+        static void Task4()
+        {
 
+        }
     }
-}
