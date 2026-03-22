@@ -201,7 +201,27 @@ class Program
         static void Task3()
         {
 
+        int rows, cols;
+
+        Input2(out rows, out cols);
+
+        int[,] arr = new int[rows, cols];
+
+        Input(arr, rows, cols);
+
+        int[] ints = new int[rows];
+        int[] ints1 = new int[cols];
+
+        int[,] outcome = new int[rows, 2];
+
+        if (!Corect(rows, cols, ints, ints1))
+        {
+            return;
         }
+        
+
+
+    }
         static void Task4()
         {
 
