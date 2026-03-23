@@ -124,6 +124,7 @@ class Program
         return arr;
 
     }
+   
 
     static void Task1()
     {
@@ -280,12 +281,70 @@ class Program
         Print(arr);
 
     }
-   
+
     static void Task4()
+    {
+        int rows, cols;
+
+        Input2(out rows, out cols);
+
+        int[,] arr = new int[rows, cols];
+
+        Input(arr, rows, cols);
+
+       
+        int[][] columns = new int[cols][];
+        for (int j = 0; j < cols; j++)
         {
-
-
-
-
+            columns[j] = new int[rows]; 
+            for (int i = 0; i < rows; i++)
+            {
+                columns[j][i] = arr[i, j];
+            }
         }
+
+        
+        for (int i = 0; i < cols - 1; i++)
+        {
+            for (int j = i + 1; j < cols; j++)
+            {
+                int min1 = GetMinInColumn(columns, i);
+                int min2 = GetMinInColumn(columns, j);
+
+                if (min1 > min2)
+                {
+                    
+                    int[] temp = columns[i];
+                    columns[i] = columns[j];
+                    columns[j] = temp;
+                }
+            }
+        }
+
+       
+        for (int j = 0; j < cols; j++)
+        {
+            for (int i = 0; i < rows; i++)
+            {
+                arr[i, j] = columns[j][i];
+            }
+        }
+
+        Print(arr);
     }
+
+  
+    static int GetMinInColumn(int[][] columns, int col)
+    {
+        int min = columns[col][0];
+        for (int i = 1; i < columns[col].Length; i++)
+        {
+            if (columns[col][i] < min)
+                min = columns[col][i];
+        }
+        return min;
+    }
+}
+
+
+    
