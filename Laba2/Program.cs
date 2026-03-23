@@ -99,6 +99,31 @@ class Program
         Console.Write("Введіть кількість стовпців: ");
         cols = int.Parse(Console.ReadLine());
     }
+    static int [] Sort(int[] arr ,int left, int right)
+    {
+        int pivot = arr[(left + right) / 2];
+        int i = left, j = right;
+        while (arr[i] < pivot)
+            i++;
+        while (arr[j] > pivot)
+            j--;
+        int temp;
+        if (i <= j)
+        {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i++;
+            j--;
+        }
+        if (left < j)
+            Sort(arr, left, j);
+
+        if (i < right)
+            Sort(arr, i, right);
+        return arr;
+
+    }
 
     static void Task1()
     {
@@ -200,7 +225,6 @@ class Program
     }
         static void Task3()
         {
-
         int rows, cols;
 
         Input2(out rows, out cols);
@@ -209,15 +233,22 @@ class Program
 
         Input(arr, rows, cols);
 
-        int[] ints = new int[rows];
-        int[] ints1 = new int[cols];
+        int minelm = arr[0, 0];
+        int thisrow = 0;
+        int [] thisarr = new int[cols];
 
-        int[,] outcome = new int[rows, 2];
+        for (int i = 0; i < rows; i++) { 
+           for (int j = 0; j < cols; j++)
+            {
+                if (arr[i, j ] < minelm)
+                {
+                    thisarr = new int[i];
+                    thisrow = i;
+                }
+            }
 
-        if (!Corect(rows, cols, ints, ints1))
-        {
-            return;
         }
+        Sort(thisarr, 0, thisarr.Length - 1);
         
 
 
