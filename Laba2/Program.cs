@@ -232,28 +232,41 @@ class Program
         int[,] arr = new int[rows, cols];
 
         Input(arr, rows, cols);
-
+        int thisrow;
         int minelm = arr[0, 0];
-        int thisrow = 0;
-        int [] thisarr = new int[cols];
+        thisrow = 0;
 
-        for (int i = 0; i < rows; i++) { 
-           for (int j = 0; j < cols; j++)
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
             {
-                if (arr[i, j ] < minelm)
+                if (arr[i, j] < minelm)
                 {
-                    thisarr = new int[i];
+                    minelm = arr[i, j];
                     thisrow = i;
                 }
             }
+        }
 
+
+        int[] thisarr = new int[cols];
+        for (int j = 0; j < cols; j++)
+        {
+            thisarr[j] = arr[thisrow, j];
         }
         Sort(thisarr, 0, thisarr.Length - 1);
+
+        for (int j = 0; j < thisarr.Length; j++)
+        {
+            arr[thisrow, j] = thisarr[j];
+        }
         
 
+        Print(arr);
 
     }
-        static void Task4()
+   
+    static void Task4()
         {
 
         }
