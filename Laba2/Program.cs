@@ -243,24 +243,39 @@ class Program
                 if (arr[i, j] < minelm)
                 {
                     minelm = arr[i, j];
-                    thisrow = i;
                 }
             }
         }
-
-
-        int[] thisarr = new int[cols];
-        for (int j = 0; j < cols; j++)
-        {
-            thisarr[j] = arr[thisrow, j];
-        }
-        Sort(thisarr, 0, thisarr.Length - 1);
-
-        for (int j = 0; j < thisarr.Length; j++)
-        {
-            arr[thisrow, j] = thisarr[j];
-        }
         
+            for (int i = 0; i < rows; i++)
+          {
+            bool hasMin = false;
+
+            for (int j = 0; j < cols; j++)
+            {
+                if (arr[i, j] == minelm)
+                {
+                    hasMin = true;
+                    break;
+                }
+            }
+            if (hasMin)
+            {
+                int[] thisarr = new int[cols];
+
+                for (int j = 0; j < cols; j++)
+                {
+                    thisarr[j] = arr[i, j];
+                }
+
+                Sort(thisarr, 0, thisarr.Length - 1);
+
+                for (int j = 0; j < cols; j++)
+                {
+                    arr[i, j] = thisarr[j];
+                }
+            }
+        }
 
         Print(arr);
 
@@ -268,6 +283,9 @@ class Program
    
     static void Task4()
         {
+
+
+
 
         }
     }
